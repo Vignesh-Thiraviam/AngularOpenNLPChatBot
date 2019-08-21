@@ -1,0 +1,28 @@
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="maindivmargin">
+<div class="ericssondivcontrol">
+    Ericsson One Cognitive Support
+    <img src="../assets/logo3.png" class="imagecontrol"alt="logoEmbajador">
+</div>
+<div class = "chatArea" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+    <div *ngFor="let hero of heroes;let i = index">
+      <app-user-chat *ngIf="i%2==0; else elseBlock" title={{hero}}></app-user-chat>
+	  <ng-template #elseBlock><app-ai-chat title={{hero}}></app-ai-chat></ng-template>
+	  
+    </div>
+  
+</div>
+
+<form>
+<div>
+    <app-typeloader *ngIf="showloader; else else2block" name="first" ></app-typeloader> 
+    <ng-template #else2block> <input class="mytext" placeholder="Type a message" 
+      name="second"
+      [(ngModel)]="textInputFromUser"/>
+    <button class="send_btn" (click)="onSubmit()" name="third"> Send </button>
+    </ng-template>
+</div>  
+</form>
+</div>
+
